@@ -1,0 +1,378 @@
+﻿<Window x:Class="SudokoSisi.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SudokoSisi"
+        mc:Ignorable="d"
+        Title="Sudoku" Height="476" Width="818.4">
+    <StackPanel Margin="0,0,0,0" Background="#9BB7C9">
+            <!--#region Menu -->
+
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Name="menuGame" Header="Game" Width="200" Foreground="#126E7F" FontWeight="Bold" FontSize="17">
+                    <MenuItem Name  ="menuStartGame" Header="Start Game" >
+                        <MenuItem Name="menuLoad"  Width="200" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Header="Load" Click="menuLoad_Click" Foreground="#126E7F" FontWeight="Bold" FontSize="17">
+                            <TextBox x:Name="TextBoxFileName" Width="100"/>
+                        </MenuItem>
+                        <MenuItem Name="menuStartNewGame"  Width="200" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Header="New" Click="btnStart_Click" Foreground="#126E7F" FontWeight="Bold" FontSize="17"/>
+                    </MenuItem>
+                    <MenuItem Name="menuFinishGame" Header="Finish Game"  Click="btnFinish_Click"/>
+                    <MenuItem Name="menuSolveGame" Header="Solve Game" Click="btnSolve_Click"/>
+                    <MenuItem Name="menuExitGame" Header="Exit Game" Click="menuExitGame_Click"/>
+
+                </MenuItem>
+                <MenuItem Name="menuSave" Width="200" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Header="Save" Click="menuSave_Click" Foreground="#126E7F" FontWeight="Bold" FontSize="17"/>
+                <MenuItem Name="menuEdit" Header="Edit" Width="200" Foreground="#126E7F" FontWeight="Bold" FontSize="17" HorizontalAlignment="Center">
+                    <MenuItem Name  ="btnUndo" Header="Undo" Click="btnUndo_Click"/>
+                    <MenuItem Name="btnRedo" Header="Redo"  Click="btnRedo_Click"/>
+                    <MenuItem Name="btnHelp" Header="Help" Click="btnHelp_Click"  />
+
+                </MenuItem>
+                <MenuItem Name="menuDifficulty" Header="Difficulty" Width="200" Foreground="#126E7F" FontWeight="Bold" FontSize="17" >
+                    <ComboBox x:Name="btnLevel" Width="112" Height="30" FontSize="20" FontWeight="Bold"  Foreground="#126E7F" Background="#E8F3F1">
+                        <ComboBoxItem  IsSelected="True" FontSize="20" FontWeight="Bold" Content="Easy"  Foreground="#126E7F" Background="#E8F3F1"/>
+                        <ComboBoxItem  FontSize="20" FontWeight="Bold" Content="Medium"  Foreground="#126E7F" Background="#E8F3F1"/>
+                        <ComboBoxItem   FontSize="20" FontWeight="Bold" Content="Difficult"  Foreground="#126E7F" Background="#E8F3F1"/>
+                    </ComboBox>
+                </MenuItem>
+            </Menu>
+
+        </DockPanel>
+        <!--#endregion-->
+
+        <!--#region Grid1_1 -->
+        <Border BorderThickness="3" BorderBrush="#126E7F" Width="130" Height="130" Margin="-620,20,0,0">
+            <Grid x:Name="Grid1_1" >
+                <Grid.Resources >
+                    <Style x:Key="BoxesStyle">
+                        <Setter Property="TextBox.FontWeight" Value="Bold"/>
+                        <Setter Property="TextBox.BorderBrush" Value="#97B1AB" />
+                        <Setter Property="Label.BorderThickness" Value="1"/>
+                        <Setter Property="Label.FontSize" Value="27" />
+                        <Setter Property="TextBox.TextAlignment" Value="Center"/>
+                        <Setter Property="TextBox.Foreground" Value="#126E7F"/> 
+                      
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBox Name ="TextBox00" TextChanged="TextBox_TextChanged" Grid.Row="0" Grid.Column="0"    Style="{StaticResource BoxesStyle}"/>
+                <TextBox  Name ="TextBox02" TextChanged ="TextBox_TextChanged" Grid.Row="0" Grid.Column="2"  Style="{StaticResource BoxesStyle}"/>
+                <TextBox  Name ="TextBox10" TextChanged ="TextBox_TextChanged" Grid.Row="1" Grid.Column="0"  Style="{StaticResource BoxesStyle}"/>
+                <TextBox  Name ="TextBox11" TextChanged ="TextBox_TextChanged" Grid.Row="1" Grid.Column="1"  Style="{StaticResource BoxesStyle}" />
+                <TextBox Name ="TextBox01" TextChanged="TextBox_TextChanged" Grid.Row="0"   Grid.Column="1"  Style="{StaticResource BoxesStyle}"/>
+                <TextBox  Name ="TextBox12" TextChanged="TextBox_TextChanged"  Grid.Row="1" Grid.Column="2"  Style="{StaticResource BoxesStyle}"/>
+                <TextBox  Name ="TextBox20" TextChanged ="TextBox_TextChanged" Grid.Row="2" Grid.Column="0"  Style="{StaticResource BoxesStyle}"/>
+                <TextBox  Name ="TextBox21" TextChanged="TextBox_TextChanged" Grid.Row="2" Grid.Column="1"   Style="{StaticResource BoxesStyle}"/>
+                <TextBox  Name ="TextBox22" TextChanged="TextBox_TextChanged" Grid.Row="2" Grid.Column="2"   Style="{StaticResource BoxesStyle}"/>
+            </Grid>
+        </Border>
+        <!--#endregion-->
+
+        <!--#region Grid1_2Square -->
+        <Border BorderThickness="3" BorderBrush="#126E7F" Width="130" Height="130" Margin="-360,-130,0,0">
+            <Grid x:Name="Grid1_2" >
+                <Grid.Resources >
+                    <Style x:Key="BoxesStyle">
+                        <Setter Property="TextBox.FontWeight" Value="Bold"/>
+                        <Setter Property="TextBox.BorderBrush" Value="#97B1AB" />
+                        <Setter Property="Label.BorderThickness" Value="1"/>
+                        <Setter Property="Label.FontSize" Value="27" />
+                        <Setter Property="TextBox.TextAlignment" Value="Center"/>
+                        <Setter Property="TextBox.Foreground" Value="#126E7F"/>
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBox Name ="TextBox03" TextChanged="TextBox_TextChanged" Grid.Row="0" Grid.Column="0"  Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox04" TextChanged="TextBox_TextChanged" Grid.Row="0" Grid.Column="1"  Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox05" TextChanged="TextBox_TextChanged" Grid.Row="0" Grid.Column="2"  Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox13" TextChanged="TextBox_TextChanged" Grid.Row="1" Grid.Column="0"  Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox14" TextChanged="TextBox_TextChanged" Grid.Row="1" Grid.Column="1"  Style="{StaticResource BoxesStyle}" />
+                <TextBox Name ="TextBox15" TextChanged="TextBox_TextChanged" Grid.Row="1" Grid.Column="2"  Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox23" TextChanged="TextBox_TextChanged" Grid.Row="2" Grid.Column="0"  Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox24" TextChanged="TextBox_TextChanged" Grid.Row="2" Grid.Column="1"  Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name="TextBox25" TextChanged="TextBox_TextChanged"  Grid.Row="2" Grid.Column="2"  Style="{StaticResource BoxesStyle}"/>
+            </Grid>
+        </Border>
+        <!--#endregion-->
+        <!--#region Grid1_3Square -->
+        <Border BorderThickness="3" BorderBrush="#126E7F" Width="130" Height="130" Margin="-100,-130,0,0">
+            <Grid x:Name="Grid1_3" >
+                <Grid.Resources >
+                    <Style x:Key="BoxesStyle">
+                        <Setter Property="TextBox.FontWeight" Value="Bold"/>
+                        <Setter Property="TextBox.BorderBrush" Value="#97B1AB" />
+                        <Setter Property="Label.BorderThickness" Value="1"/>
+                        <Setter Property="Label.FontSize" Value="27" />
+                        <Setter Property="TextBox.TextAlignment" Value="Center"/>
+                        <Setter Property="TextBox.Foreground" Value="#126E7F"/>
+
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBox Name ="TextBox06" TextChanged="TextBox_TextChanged" Grid.Row="0" Grid.Column="0" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox07" TextChanged="TextBox_TextChanged" Grid.Row="0" Grid.Column="1" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox08" TextChanged="TextBox_TextChanged" Grid.Row="0" Grid.Column="2" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox16" TextChanged="TextBox_TextChanged" Grid.Row="1" Grid.Column="0" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox17" TextChanged="TextBox_TextChanged" Grid.Row="1" Grid.Column="1" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox18" TextChanged="TextBox_TextChanged" Grid.Row="1" Grid.Column="2" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox26" TextChanged="TextBox_TextChanged" Grid.Row="2" Grid.Column="0" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox27" TextChanged="TextBox_TextChanged" Grid.Row="2" Grid.Column="1" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox28" TextChanged="TextBox_TextChanged" Grid.Row="2" Grid.Column="2" Style="{StaticResource BoxesStyle}"/>
+            </Grid>
+        </Border>
+        <!--#endregion-->
+        <!--#region Grid2_1Square -->
+        <Border BorderThickness="3" BorderBrush="#126E7F" Width="130" Height="130" Margin="-620,-2,0,0">
+            <Grid x:Name="Grid2_1" >
+                <Grid.Resources >
+                    <Style x:Key="BoxesStyle">
+                        <Setter Property="TextBox.FontWeight" Value="Bold"/>
+                        <Setter Property="TextBox.BorderBrush" Value="#97B1AB" />
+                        <Setter Property="Label.BorderThickness" Value="1"/>
+                        <Setter Property="Label.FontSize" Value="27" />
+                        <Setter Property="TextBox.TextAlignment" Value="Center"/>
+                        <Setter Property="TextBox.Foreground" Value="#126E7F"/>
+
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBox  Name ="TextBox30" TextChanged ="TextBox_TextChanged" Grid.Row="0" Grid.Column="0" Style="{StaticResource BoxesStyle}"/>
+                <TextBox  Name ="TextBox31" TextChanged ="TextBox_TextChanged" Grid.Row="0" Grid.Column="1" Style="{StaticResource BoxesStyle}"/>
+                <TextBox  Name ="TextBox32" TextChanged ="TextBox_TextChanged" Grid.Row="0" Grid.Column="2" Style="{StaticResource BoxesStyle}"/>
+                <TextBox  Name ="TextBox40" TextChanged ="TextBox_TextChanged" Grid.Row="1" Grid.Column="0" Style="{StaticResource BoxesStyle}"/>
+                <TextBox  Name ="TextBox41" TextChanged ="TextBox_TextChanged" Grid.Row="1" Grid.Column="1" Style="{StaticResource BoxesStyle}"/>
+                <TextBox  Name ="TextBox42" TextChanged ="TextBox_TextChanged" Grid.Row="1" Grid.Column="2" Style="{StaticResource BoxesStyle}"/>
+                <TextBox  Name ="TextBox50" TextChanged ="TextBox_TextChanged" Grid.Row="2" Grid.Column="0" Style="{StaticResource BoxesStyle}"/>
+                <TextBox  Name ="TextBox51" TextChanged ="TextBox_TextChanged" Grid.Row="2" Grid.Column="1" Style="{StaticResource BoxesStyle}"/>
+                <TextBox  Name ="TextBox52" TextChanged ="TextBox_TextChanged" Grid.Row="2" Grid.Column="2" Style="{StaticResource BoxesStyle}"/>
+            </Grid>
+        </Border>
+        <!--#endregion-->
+        <!--#region Grid2_2Square -->
+        <Border BorderThickness="3" BorderBrush="#126E7F" Width="130" Height="130" Margin="-360,-130,0,0">
+            <Grid x:Name="Grid2_2" >
+                <Grid.Resources >
+                    <Style x:Key="BoxesStyle">
+                        <Setter Property="TextBox.FontWeight" Value="Bold"/>
+                        <Setter Property="TextBox.BorderBrush" Value="#97B1AB" />
+                        <Setter Property="Label.BorderThickness" Value="1"/>
+                        <Setter Property="Label.FontSize" Value="27" />
+                        <Setter Property="TextBox.TextAlignment" Value="Center"/>
+                        <Setter Property="TextBox.Foreground" Value="#126E7F"/>
+
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBox Name ="TextBox33" TextChanged ="TextBox_TextChanged" Grid.Row="0" Grid.Column="0" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox34" TextChanged ="TextBox_TextChanged" Grid.Row="0" Grid.Column="1" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox35" TextChanged ="TextBox_TextChanged" Grid.Row="0" Grid.Column="2" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox43" TextChanged ="TextBox_TextChanged" Grid.Row="1" Grid.Column="0" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox44" TextChanged ="TextBox_TextChanged" Grid.Row="1" Grid.Column="1" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox45" TextChanged ="TextBox_TextChanged" Grid.Row="1" Grid.Column="2" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox53" TextChanged ="TextBox_TextChanged" Grid.Row="2" Grid.Column="0" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox54" TextChanged ="TextBox_TextChanged" Grid.Row="2" Grid.Column="1" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox55" TextChanged ="TextBox_TextChanged" Grid.Row="2" Grid.Column="2" Style="{StaticResource BoxesStyle}"/>
+            </Grid>
+        </Border>
+        <!--#endregion-->
+        <!--#region Grid2_3Square -->
+        <Border BorderThickness="3" BorderBrush="#126E7F" Width="130" Height="130" Margin="-100,-130,0,0">
+            <Grid x:Name="Grid2_3" >
+                <Grid.Resources >
+                    <Style x:Key="BoxesStyle">
+                        <Setter Property="TextBox.FontWeight" Value="Bold"/>
+                        <Setter Property="TextBox.BorderBrush" Value="#97B1AB" />
+                        <Setter Property="Label.BorderThickness" Value="1"/>
+                        <Setter Property="Label.FontSize" Value="27" />
+                        <Setter Property="TextBox.TextAlignment" Value="Center"/>
+                        <Setter Property="TextBox.Foreground" Value="#126E7F"/>
+
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBox Name ="TextBox36" TextChanged ="TextBox_TextChanged" Grid.Row="0" Grid.Column="0" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox37" TextChanged ="TextBox_TextChanged" Grid.Row="0" Grid.Column="1" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox38" TextChanged ="TextBox_TextChanged" Grid.Row="0" Grid.Column="2" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox46" TextChanged ="TextBox_TextChanged" Grid.Row="1" Grid.Column="0" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox47" TextChanged ="TextBox_TextChanged" Grid.Row="1" Grid.Column="1" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox48" TextChanged ="TextBox_TextChanged" Grid.Row="1" Grid.Column="2" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox56" TextChanged ="TextBox_TextChanged" Grid.Row="2" Grid.Column="0" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox57" TextChanged ="TextBox_TextChanged" Grid.Row="2" Grid.Column="1" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox58" TextChanged ="TextBox_TextChanged" Grid.Row="2" Grid.Column="2" Style="{StaticResource BoxesStyle}"/>
+
+            </Grid>
+        </Border>
+        <!--#endregion-->
+        <!--#region Grid3_1Square -->
+        <Border BorderThickness="3" BorderBrush="#126E7F" Width="130" Height="130" Margin="-620,-2,0,0">
+            <Grid x:Name="Grid3_1" >
+                <Grid.Resources >
+                    <Style x:Key="BoxesStyle">
+                        <Setter Property="TextBox.FontWeight" Value="Bold"/>
+                        <Setter Property="TextBox.BorderBrush" Value="#97B1AB" />
+                        <Setter Property="Label.BorderThickness" Value="1"/>
+                        <Setter Property="Label.FontSize" Value="27" />
+                        <Setter Property="TextBox.TextAlignment" Value="Center"/>
+                        <Setter Property="TextBox.Foreground" Value="#126E7F"/>
+
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBox Name ="TextBox60" TextChanged ="TextBox_TextChanged" Grid.Row="0" Grid.Column="0" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox61" TextChanged ="TextBox_TextChanged" Grid.Row="0" Grid.Column="1" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox62" TextChanged ="TextBox_TextChanged" Grid.Row="0" Grid.Column="2" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox70" TextChanged ="TextBox_TextChanged" Grid.Row="1" Grid.Column="0" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox71" TextChanged ="TextBox_TextChanged" Grid.Row="1" Grid.Column="1" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox72" TextChanged ="TextBox_TextChanged" Grid.Row="1" Grid.Column="2" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox80" TextChanged ="TextBox_TextChanged" Grid.Row="2" Grid.Column="0" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox81" TextChanged ="TextBox_TextChanged" Grid.Row="2" Grid.Column="1" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox82" TextChanged ="TextBox_TextChanged" Grid.Row="2" Grid.Column="2" Style="{StaticResource BoxesStyle}"/>
+            </Grid>
+        </Border>
+        <!--#endregion-->
+        <!--#region Grid3_2Square -->
+        <Border BorderThickness="3" BorderBrush="#126E7F" Width="130" Height="130" Margin="-360,-130,0,0">
+            <Grid x:Name="Grid3_2" >
+                <Grid.Resources >
+                    <Style x:Key="BoxesStyle">
+                        <Setter Property="TextBox.FontWeight" Value="Bold"/>
+                        <Setter Property="TextBox.BorderBrush" Value="#97B1AB" />
+                        <Setter Property="Label.BorderThickness" Value="1"/>
+                        <Setter Property="Label.FontSize" Value="27" />
+                        <Setter Property="TextBox.TextAlignment" Value="Center"/>
+                        <Setter Property="TextBox.Foreground" Value="#126E7F"/>
+
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBox Name ="TextBox63" TextChanged ="TextBox_TextChanged"  Grid.Row="0" Grid.Column="0" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox64" TextChanged ="TextBox_TextChanged" Grid.Row="0"  Grid.Column="1" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox65" TextChanged ="TextBox_TextChanged" Grid.Row="0" Grid.Column="2"  Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox73" TextChanged ="TextBox_TextChanged" Grid.Row="1" Grid.Column="0"  Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox74" TextChanged ="TextBox_TextChanged" Grid.Row="1" Grid.Column="1"  Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox75" TextChanged ="TextBox_TextChanged"  Grid.Row="1" Grid.Column="2" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox83" TextChanged ="TextBox_TextChanged"  Grid.Row="2" Grid.Column="0" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox84" TextChanged ="TextBox_TextChanged" Grid.Row="2" Grid.Column="1"  Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox85"  TextChanged ="TextBox_TextChanged"  Grid.Row="2" Grid.Column="2" Style="{StaticResource BoxesStyle}"/>
+            </Grid>
+        </Border>
+        <!--#endregion-->
+        <!--#region Grid3_3Square -->
+        <Border BorderThickness="3" BorderBrush="#126E7F" Width="130" Height="130" Margin="-100,-130,0,0">
+            <Grid x:Name="Grid3_3" >
+                <Grid.Resources >
+                    <Style x:Key="BoxesStyle">
+                        <Setter Property="TextBox.FontWeight" Value="Bold"/>
+                        <Setter Property="TextBox.BorderBrush" Value="#97B1AB" />
+                        <Setter Property="Label.BorderThickness" Value="1"/>
+                        <Setter Property="Label.FontSize" Value="27" />
+                        <Setter Property="TextBox.TextAlignment" Value="Center"/>
+                        <Setter Property="TextBox.Foreground" Value="#126E7F"/>
+
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBox Name ="TextBox66" TextChanged ="TextBox_TextChanged" Grid.Row="0" Grid.Column="0" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox67" TextChanged ="TextBox_TextChanged" Grid.Row="0" Grid.Column="1" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox68" TextChanged ="TextBox_TextChanged" Grid.Row="0" Grid.Column="2" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox76" TextChanged ="TextBox_TextChanged" Grid.Row="1" Grid.Column="0" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox77" TextChanged ="TextBox_TextChanged" Grid.Row="1" Grid.Column="1" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox78" TextChanged ="TextBox_TextChanged" Grid.Row="1" Grid.Column="2" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox86" TextChanged ="TextBox_TextChanged" Grid.Row="2" Grid.Column="0" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox87" TextChanged ="TextBox_TextChanged" Grid.Row="2" Grid.Column="1" Style="{StaticResource BoxesStyle}"/>
+                <TextBox Name ="TextBox88" TextChanged ="TextBox_TextChanged" Grid.Row="2" Grid.Column="2" Style="{StaticResource BoxesStyle}"/>
+            </Grid>
+        </Border>
+        <!--#endregion-->
+        <!--#region TextBoxes -->
+        <TextBox Name="TextBoxError"    FontSize="30" TextAlignment="Center" FontWeight="Bold" Background="#9BB7C9" Foreground="#516373" Height="90" Width="200" Margin="430,-560,0,0" BorderBrush="#97B1AB" BorderThickness="1" />
+        <TextBox Name="TextBoxSolutionsNumber"    FontSize="15" TextAlignment="Center" FontWeight="Bold" Background="#9BB7C9" Foreground="#516373" Height="30" Width="200" Margin="600,-20,0,0" BorderBrush="#97B1AB" BorderThickness="1" />
+        <Label x:Name="labelClock" FontSize="45" HorizontalAlignment="Center" Margin="450,-200,0,0"  Height="90" Width="200" FontWeight="Bold" Foreground="#126E7F"></Label>
+        <!--#endregion-->
+            
+    </StackPanel>
+
+</Window>

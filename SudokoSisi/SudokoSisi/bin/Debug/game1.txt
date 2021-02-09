@@ -1,0 +1,344 @@
+[
+  [
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 2,
+      "Constant": true
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 3,
+      "Constant": true
+    },
+    {
+      "Value": 6,
+      "Constant": true
+    },
+    {
+      "Value": 7,
+      "Constant": true
+    },
+    {
+      "Value": 4,
+      "Constant": true
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    }
+  ],
+  [
+    {
+      "Value": 4,
+      "Constant": true
+    },
+    {
+      "Value": 7,
+      "Constant": true
+    },
+    {
+      "Value": 1,
+      "Constant": true
+    },
+    {
+      "Value": 5,
+      "Constant": true
+    },
+    {
+      "Value": 9,
+      "Constant": true
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 8,
+      "Constant": true
+    }
+  ],
+  [
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 4,
+      "Constant": true
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 7,
+      "Constant": true
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    }
+  ],
+  [
+    {
+      "Value": 2,
+      "Constant": true
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 1,
+      "Constant": true
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    }
+  ],
+  [
+    {
+      "Value": 1,
+      "Constant": true
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 2,
+      "Constant": true
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 9,
+      "Constant": true
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 3,
+      "Constant": true
+    }
+  ],
+  [
+    {
+      "Value": 6,
+      "Constant": true
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 7,
+      "Constant": true
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 8,
+      "Constant": true
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 4,
+      "Constant": true
+    }
+  ],
+  [
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 4,
+      "Constant": true
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 3,
+      "Constant": true
+    },
+    {
+      "Value": 8,
+      "Constant": true
+    },
+    {
+      "Value": 7,
+      "Constant": true
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    }
+  ],
+  [
+    {
+      "Value": 7,
+      "Constant": true
+    },
+    {
+      "Value": 1,
+      "Constant": true
+    },
+    {
+      "Value": 9,
+      "Constant": true
+    },
+    {
+      "Value": 8,
+      "Constant": true
+    },
+    {
+      "Value": 2,
+      "Constant": true
+    },
+    {
+      "Value": 5,
+      "Constant": true
+    },
+    {
+      "Value": 4,
+      "Constant": true
+    },
+    {
+      "Value": 3,
+      "Constant": true
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    }
+  ],
+  [
+    {
+      "Value": 3,
+      "Constant": true
+    },
+    {
+      "Value": 6,
+      "Constant": true
+    },
+    {
+      "Value": 8,
+      "Constant": true
+    },
+    {
+      "Value": 7,
+      "Constant": true
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 1,
+      "Constant": true
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    },
+    {
+      "Value": 2,
+      "Constant": true
+    },
+    {
+      "Value": 0,
+      "Constant": false
+    }
+  ]
+]
